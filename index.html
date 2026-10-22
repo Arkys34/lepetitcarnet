@@ -111,7 +111,7 @@ const AR={id:'articles',label:'Articles'};
 const CATS={
  cinema:{label:'Cinéma',color:'#9c4a3c',fields:[['note','Note sur 5','rate'],['realisation','Réalisation','text']],subs:[{id:'notes',label:'Notes',t:tb('Film',['duree','Durée','text'],['real','Réalisateur','text'])},AR]},
  jeux:{label:'Jeux vidéo',color:'#4a6a8a',fields:[['note','Note sur 5','rate'],['plateforme','Plateforme','text']],subs:[{id:'notes',label:'Notes',t:tb('Jeu',['plateforme','Plateforme','text'],['studio','Studio','text'])},AR]},
- cuisine:{label:'Cuisine',color:'#5f7a52',fields:[['temps','Temps et portions','text'],['ingredients','Ingrédients (un par ligne)','area']],subs:[{id:'recettes',label:'Recettes'},{id:'dietetique',label:'Diététique'}]},
+ cuisine:{label:'Cuisine',color:'#5f7a52',fields:[['personnes','Nombre de personnes','text'],['budget','Budget','text'],['preparation','Temps de préparation','text'],['cuisson','Temps de cuisson','text'],['ingredients','Ingrédients (un par ligne)','area']],subs:[{id:'recettes',label:'Recettes'},{id:'dietetique',label:'Diététique'}]},
  voyages:{label:'Voyages',color:'#b0833a',fields:[['lieu','Destination','text'],['dates','Dates','text']],subs:[{id:'escapades',label:'Escapades'},{id:'notes',label:'Notes',t:tb('Destination',['pays','Pays','text'],['duree','Durée du séjour','text'])}]},
  pop:{label:'Pop culture',color:'#6d5a8a',fields:[['note','Note sur 5','rate']],subs:[{id:'notes',label:'Notes',t:tb('Titre',['type','Type','text'],['createur','Créateur','text'])},AR]}
 };
