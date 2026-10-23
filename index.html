@@ -74,8 +74,17 @@ blockquote{border-left:2px solid var(--c);margin:1.4em 0;padding-left:18px;color
 .nt input,.nt select{padding:7px 10px;font-size:14px;border-radius:8px}
 .nt .ed td{background:#fbf5e8}
 .nt .ac{white-space:nowrap;text-align:right;width:1%}
+.nt input[type=checkbox]{width:18px;height:18px;margin:0;padding:0;accent-color:var(--c)}
+.ck{background:none;border:0;cursor:pointer;font-size:20px;line-height:1;color:var(--c);padding:0 4px}
 .ib{background:none;border:0;cursor:pointer;color:var(--mute);font-size:16px;padding:4px 8px;border-radius:6px}
 .ib:hover{background:#efe6d3;color:var(--ink)}
+.dice{display:flex;align-items:center;gap:20px;flex-wrap:wrap;margin:0 0 26px;padding:18px 20px;background:var(--card);border:1px solid var(--line);border-radius:14px}
+.dbtn{display:inline-flex;align-items:center;gap:10px;padding:12px 24px;font-size:16px}
+.dbtn svg{width:26px;height:26px}
+.rolling svg{animation:spin .5s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.res{margin:0;flex:1;min-width:220px;font:15px/1.5 var(--ui);color:var(--mute)}
+.res b{display:block;font:500 26px/1.25 var(--disp);color:var(--ink)}
 .actions{margin-top:40px;padding-top:24px;border-top:1px solid var(--line)}
 label{display:block;margin-bottom:16px;font:500 14px var(--ui);color:var(--mute)}
 label input,label select,label textarea{margin-top:6px}
@@ -92,7 +101,7 @@ dialog::backdrop{background:rgba(43,35,29,.5)}
 dialog h2{margin-bottom:8px}
 :focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 @media(max-width:700px){main{margin:16px 10px 40px;padding:28px 16px 50px;border-radius:16px}.grid{grid-template-columns:1fr}.row{grid-template-columns:1fr}.toolbar{flex-direction:column}nav a,nav .tab{padding:14px 10px 12px}header{padding:0 12px}}
-@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}.rolling svg{animation:none}}
 </style>
 </head>
 <body>
@@ -109,8 +118,8 @@ const tb=(n,a,b)=>[['nom',n,'text'],['annee','Année','year'],a,b,['note','Note'
 const AR={id:'articles',label:'Articles'};
 /* Sous-catégories : t = colonnes du tableau (sinon liste d'articles). Modifiable ici. */
 const CATS={
- cinema:{label:'Cinéma',color:'#9c4a3c',fields:[['note','Note sur 5','rate'],['realisation','Réalisation','text']],subs:[{id:'notes',label:'Notes',t:tb('Film',['duree','Durée','text'],['real','Réalisateur','text'])},AR]},
- jeux:{label:'Jeux vidéo',color:'#4a6a8a',fields:[['note','Note sur 5','rate'],['plateforme','Plateforme','text']],subs:[{id:'notes',label:'Notes',t:tb('Jeu',['plateforme','Plateforme','text'],['studio','Studio','text'])},AR]},
+ cinema:{label:'Cinéma',color:'#9c4a3c',fields:[['note','Note sur 5','rate'],['realisation','Réalisation','text']],subs:[{id:'notes',label:'Notes',t:tb('Film',['duree','Durée','text'],['real','Réalisateur','text'])},AR,{id:'pot',label:'Le pot',dice:true,t:[['nom','Film','text'],['annee','Année','year'],['real','Réalisateur','text'],['reco','Proposé par','pick']]}]},
+ jeux:{label:'Jeux vidéo',color:'#4a6a8a',fields:[['note','Note sur 5','rate'],['plateforme','Plateforme','text']],subs:[{id:'notes',label:'Notes',t:tb('Jeu',['plateforme','Plateforme','text'],['studio','Studio','text'])},{id:'demos',label:'Démos',t:[['nom','Jeu','text'],['genre','Catégorie','text'],['plateforme','Plateforme','text'],['sortie','Date de sortie','date'],['reco','Proposé par','pick'],['teste','Démo testée','check'],['achat','À acheter','check'],['achete','Acheté','check'],['note','Note','rate'],['avis','Impressions','text']]},AR]},
  cuisine:{label:'Cuisine',color:'#5f7a52',fields:[['personnes','Nombre de personnes','text'],['budget','Budget','text'],['preparation','Temps de préparation','text'],['cuisson','Temps de cuisson','text'],['ingredients','Ingrédients (un par ligne)','area']],subs:[{id:'recettes',label:'Recettes'},{id:'dietetique',label:'Diététique'}]},
  voyages:{label:'Voyages',color:'#b0833a',fields:[['lieu','Destination','text'],['dates','Dates','text']],subs:[{id:'escapades',label:'Escapades'},{id:'notes',label:'Notes',t:tb('Destination',['pays','Pays','text'],['duree','Durée du séjour','text'])}]},
  pop:{label:'Pop culture',color:'#6d5a8a',fields:[['note','Note sur 5','rate']],subs:[{id:'notes',label:'Notes',t:tb('Titre',['type','Type','text'],['createur','Créateur','text'])},AR]}
@@ -171,28 +180,38 @@ function homeView(){let ed=false;
   const b=$('#eh');if(b)b.onclick=()=>{ed=true;draw()}};
  $('#q').oninput=e=>{q=e.target.value;draw()};draw()}
 
+const DICE='<div class="dice"><button type="button" class="btn dbtn" id="roll"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M16 2l12 7v14l-12 7-12-7V9z"/><path d="M16 8L4 9M16 8l12 1M9 20L4 9M23 20l5-11M9 20l7 10M23 20l-7 10M16 8l7 12H9z"/></svg>Lancer le dé</button><p class="res" id="res" aria-live="polite">Un film tiré au hasard dans le pot.</p></div>';
 function tableView(k,sb){const c=CATS[k],cols=sb.t;let sk=null,dir=1,ed=null,fq='';
- $('#app').innerHTML=`<div class="toolbar"><input id="q" type="search" placeholder="Filtrer le tableau" aria-label="Filtrer le tableau"></div><span class="lab" style="--c:${c.color}">${c.label}</span><h1>${sb.label}</h1><div class="tw" style="--c:${c.color}"><table class="nt"><thead></thead><tbody></tbody></table></div>`;
- const inp=([key,l,t],v)=>t=='pick'?`<select data-k="${key}" aria-label="${l}"><option ${v=='Erina'?'selected':''}>Erina</option><option ${v=='Arkys'?'selected':''}>Arkys</option></select>`:`<input data-k="${key}" placeholder="${l}" aria-label="${l}" ${t=='year'?'type="number" min="1850" max="2100"':t=='rate'?'type="number" min="0" max="5" step="0.5"':''} value="${esc(v)}">`;
+ $('#app').innerHTML=`<div class="toolbar"><input id="q" type="search" placeholder="Filtrer le tableau" aria-label="Filtrer le tableau"></div><span class="lab" style="--c:${c.color}">${c.label}</span><h1>${sb.label}</h1>${sb.dice?DICE:''}<div class="tw" style="--c:${c.color}"><table class="nt" style="min-width:${cols.length*118+60}px"><thead></thead><tbody></tbody></table></div>`;
+ const inp=([key,l,t],v)=>t=='check'?`<input type="checkbox" data-k="${key}" aria-label="${l}" ${v?'checked':''}>`:t=='pick'?`<select data-k="${key}" aria-label="${l}"><option ${v=='Erina'?'selected':''}>Erina</option><option ${v=='Arkys'?'selected':''}>Arkys</option></select>`:`<input data-k="${key}" placeholder="${l}" aria-label="${l}" ${t=='date'?'type="date"':t=='year'?'type="number" min="1850" max="2100"':t=='rate'?'type="number" min="0" max="5" step="0.5"':''} value="${esc(v)}">`;
  const draw=()=>{const s=fq.toLowerCase(),w=cols.length+(can()?1:0);
-  let r=notes.filter(x=>x.cat==k&&(!s||JSON.stringify(x).toLowerCase().includes(s)));
-  if(sk){const t=cols.find(x=>x[0]==sk)[2],nm=t=='year'||t=='rate';r=[...r].sort((a,b)=>(nm?(parseFloat(a[sk])||0)-(parseFloat(b[sk])||0):String(a[sk]||'').localeCompare(String(b[sk]||''),'fr'))*dir)}
+  let r=notes.filter(x=>x.cat==k&&(x.sub||'notes')==sb.id&&(!s||JSON.stringify(x).toLowerCase().includes(s)));
+  if(sk){const t=cols.find(x=>x[0]==sk)[2],nm=t=='year'||t=='rate'||t=='check',nv=v=>t=='check'?(v?1:0):parseFloat(v)||0;r=[...r].sort((a,b)=>(nm?nv(a[sk])-nv(b[sk]):String(a[sk]||'').localeCompare(String(b[sk]||''),'fr'))*dir)}
   $('.nt thead').innerHTML='<tr>'+cols.map(([key,l])=>`<th><button type="button" class="sh" data-a="s" data-id="${key}">${l}${sk==key?(dir>0?' ↑':' ↓'):''}</button></th>`).join('')+(can()?'<th></th>':'')+'</tr>';
   const row=x=>x.id==ed?`<tr class="ed">${cols.map(cl=>`<td>${inp(cl,x[cl[0]]||'')}</td>`).join('')}<td class="ac"><button type="button" class="ib" data-a="ok" data-id="${x.id}" title="Valider">✓</button><button type="button" class="ib" data-a="no" title="Annuler">✕</button></td></tr>`
-   :`<tr>${cols.map(([key,,t])=>`<td>${t=='rate'?(x[key]!==undefined&&x[key]!==''?`<span class="st" title="${esc(x[key])} sur 5">${stars(x[key])}</span>`:''):esc(x[key])}</td>`).join('')}${can()?`<td class="ac"><button type="button" class="ib" data-a="e" data-id="${x.id}" title="Modifier">✎</button><button type="button" class="ib" data-a="d" data-id="${x.id}" title="Supprimer">✕</button></td>`:''}</tr>`;
+   :`<tr>${cols.map(([key,l,t])=>`<td>${t=='rate'?(x[key]!==undefined&&x[key]!==''?`<span class="st" title="${esc(x[key])} sur 5">${stars(x[key])}</span>`:''):t=='check'?(can()?`<button type="button" class="ck" data-a="t" data-id="${x.id}" data-f="${key}" aria-label="${l}" aria-pressed="${!!x[key]}">${x[key]?'☑':'☐'}</button>`:x[key]?'✓':''):t=='date'?fd(x[key]):esc(x[key])}</td>`).join('')}${can()?`<td class="ac"><button type="button" class="ib" data-a="e" data-id="${x.id}" title="Modifier">✎</button><button type="button" class="ib" data-a="d" data-id="${x.id}" title="Supprimer">✕</button></td>`:''}</tr>`;
   $('.nt tbody').innerHTML=(r.length?r.map(row).join(''):(can()?'':`<tr><td colspan="${w}" class="empty">${s?'Rien ne correspond à cette recherche.':'Rien pour le moment.'}</td></tr>`))
    +(can()?`<tr class="ed">${cols.map(cl=>`<td>${inp(cl,'')}</td>`).join('')}<td class="ac"><button type="button" class="ib" data-a="add" title="Ajouter">＋</button></td></tr>`:'')};
  const save=async(fn,msg,btn)=>{if(btn)btn.disabled=true;try{await commit(fn,msg,NOTES,[]);ed=null;toast('Enregistré')}catch(e){toast(e.message)}draw()};
+ if(sb.dice){const btn=$('#roll'),res=$('#res');
+  btn.onclick=()=>{const r=notes.filter(x=>x.cat==k&&(x.sub||'notes')==sb.id);
+   if(!r.length){res.textContent='Le pot est vide : ajoutez-y quelques films.';return}
+   const pick=r[Math.floor(Math.random()*r.length)];
+   const fin=()=>{btn.disabled=false;btn.classList.remove('rolling');res.innerHTML=`Le dé a tranché<b>${esc(pick.nom)}</b>${[pick.annee,pick.real&&'réalisé par '+pick.real,pick.reco&&'proposé par '+pick.reco].filter(Boolean).map(esc).join(', ')}`};
+   if(matchMedia('(prefers-reduced-motion:reduce)').matches){fin();return}
+   btn.disabled=true;btn.classList.add('rolling');let n=0;
+   const iv=setInterval(()=>{if(!$('#res')||++n>14){clearInterval(iv);if($('#res'))fin();return}res.innerHTML=`Le dé roule…<b>${esc(r[Math.floor(Math.random()*r.length)].nom)}</b>`},75)}}
  const tw=$('.tw');
  tw.onclick=e=>{const t=e.target.closest('button');if(!t)return;const a=t.dataset.a,id=t.dataset.id;
   if(a=='s'){sk==id?dir=-dir:(sk=id,dir=1);draw()}
   else if(a=='e'){ed=id;draw()}
+  else if(a=='t'){save(l=>l.map(x=>x.id==id?{...x,[t.dataset.f]:!x[t.dataset.f]}:x),'Modifier une case',t)}
   else if(a=='no'){ed=null;draw()}
   else if(a=='d'){if(confirm('Supprimer cette ligne ?'))save(l=>l.filter(x=>x.id!=id),'Supprimer une note',t)}
-  else{const o={};t.closest('tr').querySelectorAll('[data-k]').forEach(i=>o[i.dataset.k]=i.value.trim());
+  else{const o={};t.closest('tr').querySelectorAll('[data-k]').forEach(i=>o[i.dataset.k]=i.type=='checkbox'?i.checked:i.value.trim());
    if(!o.nom){toast('Le nom est obligatoire.');return}
    if(a=='ok')save(l=>l.map(x=>x.id==id?{...x,...o}:x),'Modifier : '+o.nom,t);
-   else save(l=>[...l,{id:Date.now().toString(36),cat:k,...o}],'Ajouter : '+o.nom,t)}};
+   else save(l=>[...l,{id:Date.now().toString(36),cat:k,sub:sb.id,...o}],'Ajouter : '+o.nom,t)}};
  tw.onkeydown=e=>{if(e.key=='Enter'&&e.target.matches('input')){e.preventDefault();e.target.closest('tr').querySelector('[data-a=ok],[data-a=add]').click()}};
  $('#q').oninput=e=>{fq=e.target.value;draw()};draw()}
 
