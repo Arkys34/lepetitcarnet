@@ -38,5 +38,20 @@
   "achete": false,
   "note": "5",
   "avis": "Relaxant, mignon, addictif"
+ },
+ {
+  "id": "mvl2xc8j",
+  "cat": "jeux",
+  "sub": "demos",
+  "nom": "Loftia",
+  "genre": "MMO Cosy",
+  "plateforme": "Steam",
+  "sortie": "2026-11-03",
+  "reco": "Erina",
+  "teste": true,
+  "achat": true,
+  "achete": false,
+  "note": "4",
+  "avis": "Chill, MMO, personnalisation, y'a tout en mignon !"
  }
 ]
