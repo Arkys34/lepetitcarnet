@@ -23,5 +23,20 @@
   "achete": false,
   "note": "4.5",
   "avis": "Il manque juste le côté commerce qui pourrait apporter un vrai plus au jeu !"
+ },
+ {
+  "id": "mvl0wt7s",
+  "cat": "jeux",
+  "sub": "demos",
+  "nom": "Farm & Feast",
+  "genre": "Gestion Cosy",
+  "plateforme": "Steam",
+  "sortie": "2026-11-11",
+  "reco": "Erina",
+  "teste": true,
+  "achat": true,
+  "achete": false,
+  "note": "5",
+  "avis": "Relaxant, mignon, addictif"
  }
 ]
