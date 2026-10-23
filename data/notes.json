@@ -8,5 +8,20 @@
   "real": "James Cameron",
   "note": "4",
   "reco": "Erina"
+ },
+ {
+  "id": "mvkyewgh",
+  "cat": "jeux",
+  "sub": "demos",
+  "nom": "Reshine",
+  "genre": "Simulation",
+  "plateforme": "Steam",
+  "sortie": "2026-11-26",
+  "reco": "Erina",
+  "teste": true,
+  "achat": true,
+  "achete": false,
+  "note": "4.5",
+  "avis": "Il manque juste le côté commerce qui pourrait apporter un vrai plus au jeu !"
  }
 ]
