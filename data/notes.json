@@ -53,5 +53,20 @@
   "achete": false,
   "note": "4",
   "avis": "Chill, MMO, personnalisation, y'a tout en mignon !"
+ },
+ {
+  "id": "mvl5wm0u",
+  "cat": "jeux",
+  "sub": "demos",
+  "nom": "Clear The Snow",
+  "genre": "Gestion Coop",
+  "plateforme": "Steam",
+  "sortie": "",
+  "reco": "Arkys",
+  "teste": true,
+  "achat": true,
+  "achete": false,
+  "note": "3",
+  "avis": "Coop, satisfaisant, Powerwash dans la neige, manque de légères finitions."
  }
 ]
