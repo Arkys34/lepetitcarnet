@@ -128,5 +128,17 @@
   "annee": "2015",
   "real": "Rémi Bezançon",
   "reco": "Arkys"
+ },
+ {
+  "id": "mvm9xsdr",
+  "cat": "jeux",
+  "sub": "backlog",
+  "nom": "Stellar Blade",
+  "genre": "Action",
+  "plateforme": "Steam",
+  "prix": "35",
+  "duree": "57 heures",
+  "statut": "À faire",
+  "reco": "Arkys"
  }
 ]
