@@ -151,5 +151,16 @@
   "studio": "CD Projekt Red",
   "note": "5",
   "reco": "Arkys"
+ },
+ {
+  "id": "mvma1crt",
+  "cat": "jeux",
+  "sub": "notes",
+  "nom": "Baldur's Gate 3",
+  "annee": "2023",
+  "plateforme": "Steam",
+  "studio": "Larian Studios",
+  "note": "5",
+  "reco": "Arkys"
  }
 ]
