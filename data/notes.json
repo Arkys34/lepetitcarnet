@@ -140,5 +140,16 @@
   "duree": "57 heures",
   "statut": "À faire",
   "reco": "Arkys"
+ },
+ {
+  "id": "mvma09wi",
+  "cat": "jeux",
+  "sub": "notes",
+  "nom": "The Witcher 3",
+  "annee": "2015",
+  "plateforme": "Steam",
+  "studio": "CD Projekt Red",
+  "note": "5",
+  "reco": "Arkys"
  }
 ]
