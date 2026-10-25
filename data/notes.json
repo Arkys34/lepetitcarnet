@@ -37,8 +37,9 @@
   "teste": true,
   "achat": true,
   "achete": false,
-  "note": "5",
-  "avis": "Relaxant, mignon, addictif"
+  "note": "19",
+  "avis": "Relaxant, mignon, addictif",
+  "promo": false
  },
  {
   "id": "mvl2xc8j",
