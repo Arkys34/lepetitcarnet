@@ -278,5 +278,21 @@
   "achete": false,
   "note": "16.5",
   "avis": "Jeu de Tri qui semble classique, gros potentiel de 20/20 si par la suite on peut faire des constructions nous même et pas que automatique.."
+ },
+ {
+  "id": "mvnuiyyw",
+  "cat": "jeux",
+  "sub": "demos",
+  "nom": "Pack a Plush",
+  "genre": "Casual / Simulation",
+  "plateforme": "Steam",
+  "sortie": "2026-10-28",
+  "reco": "Erina",
+  "teste": true,
+  "achat": false,
+  "promo": false,
+  "achete": false,
+  "note": "12",
+  "avis": "J'ai pas accroché. La DA est cute mais je ne me suis pas sentie libre de faire ce que je voulais, même en terme de décoration on ne choisis pas vraiment. C'est dommage."
  }
 ]
