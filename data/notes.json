@@ -162,5 +162,21 @@
   "studio": "Larian Studios",
   "note": "5",
   "reco": "Arkys"
+ },
+ {
+  "id": "mvntohoa",
+  "cat": "jeux",
+  "sub": "demos",
+  "nom": "Book Nook",
+  "genre": "Casual",
+  "plateforme": "Steam",
+  "sortie": "",
+  "reco": "Erina",
+  "teste": true,
+  "achat": true,
+  "promo": false,
+  "achete": false,
+  "note": "4.5",
+  "avis": "Tout ce qu'on attend d'un jeu cosy."
  }
 ]
