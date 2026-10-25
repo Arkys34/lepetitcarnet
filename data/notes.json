@@ -210,5 +210,21 @@
   "achete": false,
   "note": "9",
   "avis": "Pas mon style. Les graphismes et la DA rend ca assez enfantin. Pas de VF dispo."
+ },
+ {
+  "id": "mvnu6fln",
+  "cat": "jeux",
+  "sub": "demos",
+  "nom": "A place for every potion",
+  "genre": "Organisation",
+  "plateforme": "Steam",
+  "sortie": "2026-10-28",
+  "reco": "Erina",
+  "teste": true,
+  "achat": true,
+  "promo": false,
+  "achete": false,
+  "note": "18",
+  "avis": "Prometteur, allie le tri et un système de mini jeu dans le tri. J'espère qu'il y a d'autres pièces pour que ca puisse se répéter a l'infini. La DA est géniale !"
  }
 ]
