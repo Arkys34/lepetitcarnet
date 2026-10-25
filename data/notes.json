@@ -53,8 +53,9 @@
   "teste": true,
   "achat": true,
   "achete": false,
-  "note": "4",
-  "avis": "Chill, MMO, personnalisation, y'a tout en mignon !"
+  "note": "16",
+  "avis": "Chill, MMO, personnalisation, y'a tout en mignon !",
+  "promo": false
  },
  {
   "id": "mvl5wm0u",
