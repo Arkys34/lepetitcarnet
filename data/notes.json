@@ -246,5 +246,21 @@
   "achete": false,
   "note": "15",
   "avis": "Map qui semble assez petite, pas toujours intuitif dans les explications mais l'univers est mimi et le jeu prometteur."
+ },
+ {
+  "id": "mvnudka3",
+  "cat": "jeux",
+  "sub": "demos",
+  "nom": "Heritage Flipper",
+  "genre": "Simulation",
+  "plateforme": "Steam",
+  "sortie": "2027-04-25",
+  "reco": "Erina",
+  "teste": true,
+  "achat": false,
+  "promo": true,
+  "achete": false,
+  "note": "16",
+  "avis": "House Flipper x Power Wash dans une Da plus belle est naturelle. Vrai potentiel, prions pour un multijoueur !"
  }
 ]
