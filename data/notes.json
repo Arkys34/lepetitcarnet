@@ -230,5 +230,21 @@
   "achete": false,
   "note": "19",
   "avis": "Prometteur, allie le tri et un système de mini jeu dans le tri. J'espère qu'il y a d'autres pièces pour que ca puisse se répéter a l'infini. La DA est géniale !"
+ },
+ {
+  "id": "mvnubbic",
+  "cat": "jeux",
+  "sub": "demos",
+  "nom": "HavenCraft",
+  "genre": "Simulation",
+  "plateforme": "Steam",
+  "sortie": "2026-12-09",
+  "reco": "Erina",
+  "teste": true,
+  "achat": false,
+  "promo": true,
+  "achete": false,
+  "note": "15",
+  "avis": "Map qui semble assez petite, pas toujours intuitif dans les explications mais l'univers est mimi et le jeu prometteur."
  }
 ]
