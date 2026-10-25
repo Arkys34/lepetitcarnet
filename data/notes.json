@@ -194,5 +194,21 @@
   "achete": false,
   "note": "3",
   "avis": "Pas de surprise, mais fluide, ne pends pas trop de place, on peut changer la taille et la custom."
+ },
+ {
+  "id": "mvnu3i8i",
+  "cat": "jeux",
+  "sub": "demos",
+  "nom": "Ravenwood Academy : A Wizard Story",
+  "genre": "Aventure Interactive",
+  "plateforme": "Steam",
+  "sortie": "",
+  "reco": "Erina",
+  "teste": true,
+  "achat": false,
+  "promo": false,
+  "achete": false,
+  "note": "9",
+  "avis": "Pas mon style. Les graphismes et la DA rend ca assez enfantin. Pas de VF dispo."
  }
 ]
