@@ -64,15 +64,15 @@ blockquote{border-left:2px solid var(--c);margin:1.4em 0;padding-left:18px;color
 .tag:hover{color:var(--ink)}
 .tw{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:var(--card)}
 .nt{width:100%;min-width:780px;border-collapse:collapse;font:15px var(--ui)}
-.nt th,.nt td{padding:11px 14px;text-align:left;border-bottom:1px solid var(--line);vertical-align:middle}
-.nt th{font-weight:500;color:var(--mute);background:#f6efe2;white-space:nowrap}
+.nt th,.nt td{padding:10px 9px;text-align:left;border-bottom:1px solid var(--line);vertical-align:middle}
+.nt th{font-weight:500;color:var(--mute);background:#f6efe2;line-height:1.3}
 .nt tbody tr:last-child td{border-bottom:0}
 .nt tbody tr:not(.ed):hover{background:#fbf5e8}
 .nt td:first-child{font:500 17px var(--disp)}
 .sh{all:unset;cursor:pointer}
 .sh:hover{color:var(--ink)}
-.nt select{min-width:100px}
-.nt input:not([type=checkbox]){min-width:118px}
+.nt select{min-width:88px}
+.nt input:not([type=checkbox]){min-width:92px}
 .nt input[type=number]{min-width:84px}
 .nt input,.nt select{padding:7px 10px;font-size:14px;border-radius:8px}
 .nt .ed td{background:#fbf5e8}
@@ -87,6 +87,14 @@ blockquote{border-left:2px solid var(--c);margin:1.4em 0;padding-left:18px;color
 .po{all:unset;box-sizing:border-box;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;height:76px;border-radius:10px;cursor:pointer;font:12px/1.2 var(--ui);color:var(--mute);text-align:center}
 .po:hover,.po:focus-visible{background:#f3eadb;color:var(--ink)}
 .po img{width:36px;height:36px;object-fit:contain}
+main.wide{max-width:min(1640px,calc(100vw - 32px));padding-left:24px;padding-right:24px}
+#hs{position:fixed;bottom:0;height:18px;z-index:6;overflow-x:auto;overflow-y:hidden;background:rgba(252,246,236,.94);border-top:1px solid var(--line);scrollbar-color:#b89868 #efe6d3}
+#hs[hidden]{display:none}
+#hs div{height:1px}
+#hs::-webkit-scrollbar{height:14px}
+#hs::-webkit-scrollbar-track{background:#efe6d3}
+#hs::-webkit-scrollbar-thumb{background:#b89868;border-radius:7px;border:3px solid #efe6d3}
+@media(hover:none){#hs{display:none!important}}
 .gadd{display:flex;gap:10px;margin:0 0 28px;max-width:520px}
 .gm{margin-bottom:26px}
 .gm summary{list-style:none;cursor:pointer;display:flex;align-items:baseline;gap:12px;padding:6px 4px 12px;margin-bottom:14px;border-bottom:2px solid var(--c);font:500 26px var(--disp)}
@@ -206,7 +214,7 @@ function homeView(){let ed=false;
 
 const DICE='<div class="dice"><button type="button" class="btn dbtn" id="roll"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M16 2l12 7v14l-12 7-12-7V9z"/><path d="M16 8L4 9M16 8l12 1M9 20L4 9M23 20l5-11M9 20l7 10M23 20l-7 10M16 8l7 12H9z"/></svg>Lancer le dé</button><p class="res" id="res" aria-live="polite">Un film tiré au hasard dans le pot.</p></div>';
 function tableView(k,sb,R=document.querySelector('#app'),cmp){const $=s=>R.querySelector(s);const c=CATS[k],cols=sb.t;let sk=null,dir=1,ed=null,fq='';
- R.innerHTML=`${cmp?'':`<div class="toolbar"><input id="q" type="search" placeholder="Filtrer le tableau" aria-label="Filtrer le tableau"></div><span class="lab" style="--c:${c.color}">${c.label}</span><h1>${sb.label}</h1>`}${sb.dice?DICE:''}<div class="tw" style="--c:${c.color}"><table class="nt" style="min-width:${cols.length*118+60}px"><thead></thead><tbody></tbody></table></div>`;
+ R.innerHTML=`${cmp?'':`<div class="toolbar"><input id="q" type="search" placeholder="Filtrer le tableau" aria-label="Filtrer le tableau"></div><span class="lab" style="--c:${c.color}">${c.label}</span><h1>${sb.label}</h1>`}${sb.dice?DICE:''}<div class="tw" style="--c:${c.color}"><table class="nt" style="min-width:${cols.length*92+60}px"><thead></thead><tbody></tbody></table></div>`;
  const inp=([key,l,t,o],v)=>t=='sug'?`<input data-k="${key}" list="dl-${key}" placeholder="${l}" aria-label="${l}" value="${esc(v)}"><datalist id="dl-${key}">${o.map(z=>`<option value="${z}">`).join('')}</datalist>`:t=='plat'?`<button type="button" class="pf" data-a="pf" data-k="${key}" value="${esc(v)}" aria-label="${l}">${platHtml(v)||'Choisir'}</button>`:t=='sel'?`<select data-k="${key}" aria-label="${l}">${o.map(z=>`<option ${v==z?'selected':''}>${z}</option>`).join('')}</select>`:t=='check'?`<input type="checkbox" data-k="${key}" aria-label="${l}" ${v?'checked':''}>`:t=='pick'?`<select data-k="${key}" aria-label="${l}"><option ${v=='Erina'?'selected':''}>Erina</option><option ${v=='Arkys'?'selected':''}>Arkys</option><option ${v=='Nous'?'selected':''}>Nous</option></select>`:`<input data-k="${key}" placeholder="${l}" aria-label="${l}" ${t=='url'?'type="url"':t=='price'?'type="number" min="0" step="0.01"':t=='date'?'type="date"':t=='year'?'type="number" min="1850" max="2100"':t=='rate'?'type="number" min="0" max="20" step="0.5"':''} value="${esc(v)}">`;
  const draw=()=>{cmp&&cmp();const s=fq.toLowerCase(),w=cols.length+(can()?1:0);
   let r=notes.filter(x=>x.cat==k&&(x.sub||'notes')==sb.id&&(!s||JSON.stringify(x).toLowerCase().includes(s)));
@@ -287,7 +295,7 @@ function route(){
  const on=k=='c'||k=='new'?a:k=='a'||k=='edit'?(art||{}).cat:'home';
  document.querySelectorAll('#nav [data-k]').forEach(n=>n.classList.toggle('on',n.dataset.k==on));
  if(k=='c'&&CATS[a]){const x=CATS[a].subs.find(y=>y.id==sb)||CATS[a].subs[0];x.mods?modsView(a,x):x.t?tableView(a,x):listView(a,x)}else if(k=='a')articleView(art);else if(k=='new')editor(null,a,sb);else if(k=='edit')editor(art);else homeView();
- scrollTo(0,0)}
+ $('#app').classList.toggle('wide',!!$('#app .tw'));setTimeout(hsUpdate,0);scrollTo(0,0)}
 
 /* Réglages */
 const openSettings=()=>{const c=conf(),d=$('#dlg');
@@ -338,6 +346,16 @@ menu.addEventListener('click',e=>{if(e.target.closest('a')){q='';closeMenu()}});
 document.addEventListener('click',e=>{if(!e.target.closest('.tab,#menu,.pf,#pfm'))closeMenu()});
 addEventListener('keydown',e=>{if(e.key=='Escape')closeMenu()});
 addEventListener('scroll',closeMenu,true);addEventListener('resize',closeMenu);
+/* Barre de défilement horizontale flottante : reste en bas de la fenêtre tant que le tableau déborde */
+const hs=document.createElement('div');hs.id='hs';hs.hidden=true;hs.innerHTML='<div></div>';document.body.appendChild(hs);let hsT=null;
+function hsUpdate(){let t=null;
+ for(const x of document.querySelectorAll('.tw')){if(x.scrollWidth<=x.clientWidth+1)continue;const r=x.getBoundingClientRect();if(r.top<innerHeight-60&&r.bottom>innerHeight){t=x;break}}
+ hsT=t;if(!t){hs.hidden=true;return}
+ const r=t.getBoundingClientRect();hs.hidden=false;hs.style.left=r.left+'px';hs.style.width=r.width+'px';hs.firstChild.style.width=t.scrollWidth+'px';
+ if(hs.scrollLeft!==t.scrollLeft)hs.scrollLeft=t.scrollLeft}
+hs.addEventListener('scroll',()=>{if(hsT&&hsT.scrollLeft!==hs.scrollLeft)hsT.scrollLeft=hs.scrollLeft});
+addEventListener('scroll',e=>{if(hsT&&e.target===hsT){if(hs.scrollLeft!==hsT.scrollLeft)hs.scrollLeft=hsT.scrollLeft}else if(e.target!==hs)hsUpdate()},true);
+addEventListener('resize',hsUpdate);new ResizeObserver(hsUpdate).observe($('#app'));
 document.addEventListener('click',e=>{const t=e.target.closest('[data-tag]');if(t)q=t.dataset.tag});
 addEventListener('hashchange',route);
 load();
