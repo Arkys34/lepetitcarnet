@@ -326,5 +326,21 @@
   "achete": false,
   "note": "10.5",
   "avis": "J'ai pas accroché. Pas de VF dispo ce qui rend le jeu plus compliqué. Le jeu semble très répétitif. Cependant il y a l'air d'avoir une backstory. Il faut peut être être fan de ce genre de jeu 2D de base pour apprécier. Pas ma cam."
+ },
+ {
+  "id": "mvnupqqh",
+  "cat": "jeux",
+  "sub": "demos",
+  "nom": "RipIt !",
+  "genre": "Collection / Incrémental",
+  "plateforme": "Steam",
+  "sortie": "2026-10-30",
+  "reco": "Erina",
+  "teste": true,
+  "achat": false,
+  "promo": false,
+  "achete": false,
+  "note": "9",
+  "avis": "La Musique donne mal au crane, certains sons sont cependant satisfaisants. Le jeu semble extrêmement limité, peut être que pour la démo mais je ne l'achèterai pas."
  }
 ]
