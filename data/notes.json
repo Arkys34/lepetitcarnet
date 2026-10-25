@@ -358,5 +358,21 @@
   "achete": false,
   "note": "16",
   "avis": "Mignon, satisfaisant, ca m'a pris direct et il y a pleins de petites mécaniques ou de petits trucs secrets et cute à découvrir. A voir le potentiel de répétabilité ou la continuité"
+ },
+ {
+  "id": "mvnuu9ef",
+  "cat": "jeux",
+  "sub": "demos",
+  "nom": "Too Deep To Quit",
+  "genre": "Coop en Ligne / Aventure",
+  "plateforme": "Steam",
+  "sortie": "",
+  "reco": "Erina",
+  "teste": true,
+  "achat": false,
+  "promo": true,
+  "achete": false,
+  "note": "13.5",
+  "avis": "Potentiel de fun en coop présent, mais ressemble beaucoup à peek dans sa DA notamment. Certaines mécaniques comme les malédictions sont sympa. Cool pour passer 3 ou 4 soirées entre pote mais j'ai peur que ce soit trop répétitif par la suite."
  }
 ]
