@@ -390,5 +390,21 @@
   "achete": false,
   "note": "18",
   "avis": "La nostalgie des vieux RPG. Me fait penser aux premiers Zelda. Gros coup de coeur de ma part."
+ },
+ {
+  "id": "mvo0zhc5",
+  "cat": "jeux",
+  "sub": "demos",
+  "nom": "Dreadmoore",
+  "genre": "Aventure",
+  "plateforme": "Steam",
+  "sortie": "2026-11-09",
+  "reco": "Erina",
+  "teste": true,
+  "achat": false,
+  "promo": true,
+  "achete": false,
+  "note": "17.5",
+  "avis": "Quelle ambiance de fou malade !  Le jeu nous plonge dans un univers post apo océanique avec de la pêche détente et une histoire légèrement horrifique ou sortir la nuit est un danger. Les personnages sont haut en couleurs et la pêche est relaxante. Les mécaniques sont chouettes."
  }
 ]
