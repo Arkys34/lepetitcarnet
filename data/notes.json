@@ -342,5 +342,21 @@
   "achete": false,
   "note": "9",
   "avis": "La Musique donne mal au crane, certains sons sont cependant satisfaisants. Le jeu semble extrêmement limité, peut être que pour la démo mais je ne l'achèterai pas."
+ },
+ {
+  "id": "mvnurs72",
+  "cat": "jeux",
+  "sub": "demos",
+  "nom": "Sort The Bunnies",
+  "genre": "Organisation",
+  "plateforme": "Steam",
+  "sortie": "2026-10-27",
+  "reco": "Erina",
+  "teste": true,
+  "achat": false,
+  "promo": true,
+  "achete": false,
+  "note": "16",
+  "avis": "Mignon, satisfaisant, ca m'a pris direct et il y a pleins de petites mécaniques ou de petits trucs secrets et cute à découvrir. A voir le potentiel de répétabilité ou la continuité"
  }
 ]
