@@ -178,5 +178,21 @@
   "achete": false,
   "note": "4.5",
   "avis": "Tout ce qu'on attend d'un jeu cosy."
+ },
+ {
+  "id": "mvntqsre",
+  "cat": "jeux",
+  "sub": "demos",
+  "nom": "Desktop Duck",
+  "genre": "Compagnon de bureau",
+  "plateforme": "Steam",
+  "sortie": "",
+  "reco": "Erina",
+  "teste": true,
+  "achat": false,
+  "promo": false,
+  "achete": false,
+  "note": "3",
+  "avis": "Pas de surprise, mais fluide, ne pends pas trop de place, on peut changer la taille et la custom."
  }
 ]
