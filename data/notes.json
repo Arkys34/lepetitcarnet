@@ -69,8 +69,9 @@
   "teste": true,
   "achat": true,
   "achete": false,
-  "note": "3",
-  "avis": "Coop, satisfaisant, Powerwash dans la neige, manque de légères finitions."
+  "note": "12",
+  "avis": "Coop, satisfaisant, Powerwash dans la neige, manque de légères finitions.",
+  "promo": false
  },
  {
   "id": "mvm9pb5m",
